@@ -145,7 +145,7 @@ def insert_tweet(connection,tweet):
             :location,
             :description,
             :withheld_in_countries
-            ) ON CONFLICT DO NOTHING;
+            ) ON CONFLICT DO NOTHING
             ''')
         res = connection.execute(sql, {
             'id_users' :tweet.get('user', {}).get('id', None),
@@ -223,7 +223,7 @@ def insert_tweet(connection,tweet):
             sql=sqlalchemy.sql.text('''
             SELECT id_users
             FROM users
-            WHERE id_users = :in_reply_to_user_id;
+            WHERE id_users = :in_reply_to_user_id
                 ''')
             res = connection.execute(sql, {
                 'in_reply_to_user_id': tweet['in_reply_to_user_id']
